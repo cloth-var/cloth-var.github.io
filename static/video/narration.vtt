@@ -1,0 +1,58 @@
+WEBVTT
+
+00:00.500 --> 00:06.691
+We introduce our paper, "Same action, different outcome: variability in dynamic cloth manipulation".
+
+00:07.350 --> 00:17.552
+In most cloth simulators, identical trajectories applied to the cloth result in identical outcomes. In the real world, however, we get a distribution of outcomes.
+
+00:18.052 --> 00:30.965
+For example, in dynamic folding, ten replays on two very different fabrics. The thick wool lands in almost the same place for each rollout, while the light satin lands in distinctly different places on the table.
+
+00:31.465 --> 00:36.083
+Stacked on one photograph, the ten outlines show how much the cloth outcome varies.
+
+00:36.583 --> 00:55.270
+To measure this variability, we used a bimanual Franka setup. For each task and cloth, the robot replays a demonstrated trajectory ten times. Nineteen retroreflective markers track the cloth keypoints, and a stereo RGB-D camera records the image streams during the motions.
+
+00:58.850 --> 01:07.580
+All streams are synchronized on one wall clock, so at any instant the markers, the frames, the depth and the robot samples describe the same moment.
+
+01:08.350 --> 01:21.454
+This lets us reconstruct every episode in 3-D, here for the four dynamic tasks. Swing the cloth and place it flat. Fold it with one hand. Join two corners linearly. And swing to join them.
+
+01:21.954 --> 01:26.470
+We ran the tasks in various configurations, including the execution speed,
+
+01:26.970 --> 01:31.992
+as well as fabric types with extreme physical properties, wool, satin and chiffon.
+
+01:32.492 --> 01:36.598
+This results in twenty-seven configurations, with ten replays each.
+
+01:37.850 --> 01:51.061
+We measure how far apart the free edges of two replays settle, marker by marker, averaged over all pairs. That is our variability metric, D-bar. On a grasped corner it stays here under a tenth of a millimetre.
+
+01:51.561 --> 02:00.199
+Following the motion, the variability starts at its minimum, grows during the motion, and sometimes peaks before the motion ends and the cloth settles.
+
+02:00.850 --> 02:10.897
+The variability changes dramatically, from one millimetre up to more than a hundred. The cloth type is the dominant factor, and in most tasks, higher velocity increases it.
+
+02:11.397 --> 02:23.910
+We also tried a camera-only analysis, with SAM 2 for the mask, FoundationStereo for depth, and DINOv3 patches as virtual markers. Its segmentation is not always clean.
+
+02:24.410 --> 02:30.161
+The camera keeps the general trend of the variability, but it doesn't keep its values nor its ordering.
+
+02:30.850 --> 02:34.465
+And simulation? Every no-regrasp rollout, replayed.
+
+02:35.350 --> 02:45.124
+Calibrated per fabric, driven by the measured inputs, the simulated cloth follows the real motion. Replayed ten times, it does not scatter like the real one.
+
+02:45.850 --> 02:53.304
+No engine reproduces the real variability, in magnitude or in order. Clothilde comes closest, then Genesis.
+
+02:53.850 --> 02:58.522
+Everything here, the recordings and the simulator twins, is on the project page.
